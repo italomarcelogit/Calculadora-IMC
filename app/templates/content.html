@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="Nome" placeholder="Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="Peso" placeholder="Peso" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="Altura" placeholder="Altura" required>
+                        </div>
+                        <button class="btn btn-info" type="submit">
+                            Inserir e calcular IMC
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Peso</th>
+                    <th>Altura</th>
+                    <th>IMC</th>
+                    <th>Classificação</th>
+                    <th>Operação</th>
+                </tr>
+
+                <tbody>
+
+                {% for entry in entries %}
+                <tr>
+                    <td>{{ entry.Nome }}</td>
+                    <td>{{ entry.Peso }}</td>
+                    <td>{{ entry.Altura }}</td>
+                    <td><strong>{{ entry.Imc }}</strong></td>
+                    <td><strong>{{ entry.Classificacao }}</strong></td>
+                    <td>
+                        <a class="btn btn-danger"
+                           href="/action/delete/{{ entry._id }}">
+                            Delete
+                        </a>
+                        <a class="btn btn-warning"
+                           href="/action/update/{{ entry._id }}">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
