@@ -47,14 +47,15 @@
                     <td><strong>{{ entry.Imc }}</strong></td>
                     <td><strong>{{ entry.Classificacao }}</strong></td>
                     <td>
-                        <a class="btn btn-danger"
-                           href="/action/delete/{{ entry._id }}">
-                            Delete
-                        </a>
                         <a class="btn btn-warning"
                            href="/action/update/{{ entry._id }}">
                             Edit
                         </a>
+                        <a class="btn btn-danger"
+                           href="/action/delete/{{ entry._id }}">
+                            Delete
+                        </a>
+
                     </td>
                 </tr>
                 {% endfor %}
